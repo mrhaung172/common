@@ -1,6 +1,6 @@
 package com.util;
 
-import com.pp100.model.domain.SignDataItemEnum;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.collections.map.LinkedMap;
 import org.apache.commons.lang.StringUtils;
@@ -95,7 +95,6 @@ public class Sign {
      *
      * @param signParamMap
      * @param md5Key
-     * @param keyIndex
      * @param threeDesKey
      * @param encryptType
      * @return add by hof_20151113_1212
@@ -159,7 +158,7 @@ public class Sign {
         /*
          * if(threeDesKey!=null && Constants.THREE_DES.equals(encryptType) ){ sign = Encrypt(original, threeDesKey); } else
          */
-        if (Constants.SHA1.equals(encryptType)) {
+        if ("SHA1".equalsIgnoreCase(encryptType)) {
             sign = sha1(original);
         } else {
             sign = DigestUtils.md5Hex(original);
@@ -266,7 +265,7 @@ public class Sign {
             mdInst = MessageDigest.getInstance("MD5");
             // 使用指定的字节更新摘要
             mdInst.update(str.getBytes());
-            String sign = StringUtil.byte2Hex(mdInst.digest());
+            String sign = Hex.encodeHexStr(mdInst.digest());
 
             logger.info("签名后-------： " + sign);
 

@@ -56,7 +56,7 @@ public class HttpUtils {
     }
 
     public static void main(String[] args) throws IOException {
-        HttpGet httpGet = new HttpGet("https://www.pp100.com/");
+        HttpGet httpGet = new HttpGet("http://www.baidu.com.com/");
         httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:39.0) Gecko/20100101 Firefox/39.0");
         HttpResponse response = closeableHttpClient.execute(httpGet);
         System.out.println(EntityUtils.toString(response.getEntity(), "UTF-8"));
